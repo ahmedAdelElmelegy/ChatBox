@@ -1,6 +1,8 @@
+import 'package:chat_box/core/helpers/extentions.dart';
 import 'package:chat_box/core/helpers/spacing.dart';
 import 'package:chat_box/core/widgets/custom_btn.dart';
 import 'package:chat_box/core/widgets/custom_text_field.dart';
+import 'package:chat_box/feature/main_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatelessWidget {
@@ -15,7 +17,9 @@ class LoginForm extends StatelessWidget {
         CustomTextField(text: 'Password', obscureText: true),
         verticalSpace(177),
         CustomBtn(
-          onPress: () {},
+          onPress: () {
+            pushAndRemoveUntil(MainScreen());
+          },
 
           // grey light loading
           label: 'Log in',

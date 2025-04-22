@@ -109,11 +109,12 @@ class Assets {
 
   /// Assets for iconsSettings
   /// assets/icons/settings.png
-  static const String iconsSettings = "assets/icons/settings.png";
+  static const String iconsSettings = "assets/icons/settings.svg";
 
   /// Assets for iconsUser
   /// assets/icons/user.svg
   static const String iconsUser = "assets/icons/user.svg";
+  static const String message = "assets/icons/messag.svg";
 
   /// Assets for iconsUserActive
   /// assets/icons/user_active.svg
