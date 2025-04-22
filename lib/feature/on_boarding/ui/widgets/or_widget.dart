@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ORWidget extends StatelessWidget {
-  const ORWidget({super.key});
+  final Color? textColor;
+  final Color? dividerColor;
+  const ORWidget({super.key, this.textColor, this.dividerColor});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class ORWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          height: .3.h,
+          height: 1.h,
           color: ColorManager.secondaryLight,
           width: 132.w,
         ),
@@ -21,14 +23,14 @@ class ORWidget extends StatelessWidget {
         Text(
           'OR',
           style: TextSTyles.f14CirStdMediumGrey.copyWith(
-            color: ColorManager.secondaryLight,
+            color: textColor ?? ColorManager.secondaryLight,
           ),
         ),
         horizontalSpace(15),
         Container(
-          height: .3.h,
+          height: 1.h,
 
-          color: ColorManager.secondaryLight,
+          color: dividerColor ?? ColorManager.secondaryLight,
           width: 132.w,
         ),
       ],

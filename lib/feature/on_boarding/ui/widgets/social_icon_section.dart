@@ -4,18 +4,39 @@ import 'package:chat_box/core/widgets/social_icon.dart';
 import 'package:flutter/material.dart';
 
 class SocialIconSection extends StatelessWidget {
-  const SocialIconSection({super.key});
+  final Color? backgroundColor;
+  final Color? iconColor;
+  final Color? strokeColor;
+  const SocialIconSection({
+    super.key,
+    this.backgroundColor,
+    this.iconColor,
+    this.strokeColor,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SocialIcon(icon: Assets.iconsFacebook),
+        SocialIcon(
+          icon: Assets.iconsFacebook,
+          strokeColor: strokeColor,
+          bagroundColor: backgroundColor,
+        ),
         horizontalSpace(20),
-        SocialIcon(icon: Assets.iconsGoogle),
+        SocialIcon(
+          icon: Assets.iconsGoogle,
+          strokeColor: strokeColor,
+          bagroundColor: backgroundColor,
+        ),
         horizontalSpace(20),
-        SocialIcon(icon: Assets.iconsApple),
+        SocialIcon(
+          strokeColor: strokeColor,
+          icon: Assets.iconsApple,
+          iconColor: iconColor,
+          bagroundColor: backgroundColor,
+        ),
       ],
     );
   }

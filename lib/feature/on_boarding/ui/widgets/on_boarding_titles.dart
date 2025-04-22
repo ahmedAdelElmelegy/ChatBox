@@ -2,8 +2,8 @@ import 'package:chat_box/core/helpers/spacing.dart';
 import 'package:chat_box/core/theme/styles.dart';
 import 'package:flutter/material.dart';
 
-class OnBoardingTitles extends StatelessWidget {
-  const OnBoardingTitles({super.key});
+class OnBoardingHeaders extends StatelessWidget {
+  const OnBoardingHeaders({super.key});
 
   @override
   Widget build(BuildContext context) {

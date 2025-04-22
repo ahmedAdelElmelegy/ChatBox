@@ -8,11 +8,13 @@ class TextSTyles {
   static TextStyle f68CarosMeduimWhite = TextStyle(
     fontSize: 68.sp,
     fontFamily: 'Caros',
+    height: 1.h,
 
     color: ColorManager.white,
   );
   static TextStyle f68CarosboldWhite = TextStyle(
     fontSize: 68.sp,
+    height: 1.h,
     fontFamily: 'CarosBold',
     color: ColorManager.white,
   );
@@ -37,7 +39,7 @@ class TextSTyles {
     color: ColorManager.black,
   );
   // f18
-  static TextStyle f18CarosMediumBlack = TextStyle(
+  static TextStyle f18CarosBoldBlack = TextStyle(
     fontSize: 18.sp,
     fontFamily: 'CarosBold',
 
