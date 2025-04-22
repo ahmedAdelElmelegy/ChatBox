@@ -41,9 +41,10 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: pages[currentIndex],
       bottomNavigationBar: SizedBox(
-        height: 60.h,
+        height: 90.h,
         width: double.infinity,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             onIconSelected(
@@ -97,6 +98,7 @@ class _MainScreenState extends State<MainScreen> {
     return GestureDetector(
       onTap: onTap,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgIcon(icon: isActive ? activeIcon : icon),
           verticalSpace(2),
