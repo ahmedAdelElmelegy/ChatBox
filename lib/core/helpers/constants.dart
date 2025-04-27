@@ -30,6 +30,7 @@ class Assets {
   /// Assets for iconsCall
   /// assets/icons/call.svg
   static const String iconsCall = "assets/icons/call.svg";
+  static const String myStoryBag = "assets/icons/my_story_bag.png";
 
   /// Assets for iconsCallActive
   /// assets/icons/call_active.svg

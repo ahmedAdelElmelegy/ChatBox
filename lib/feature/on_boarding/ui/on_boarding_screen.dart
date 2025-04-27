@@ -32,8 +32,8 @@ class OnBoardingScreen extends StatelessWidget {
           child: Column(
             children: [
               verticalSpace(61),
-              SvgIcon(icon: Assets.iconsLogo),
-              verticalSpace(43),
+              SvgIcon(icon: Assets.iconsLogo, height: 19.h),
+              verticalSpace(42),
               OnBoardingHeaders(),
               verticalSpace(38),
               SocialIconSection(),
@@ -56,6 +56,7 @@ class OnBoardingScreen extends StatelessWidget {
                   push(const LoginScreen());
                 },
               ),
+              verticalSpace(20),
             ],
           ),
         ),

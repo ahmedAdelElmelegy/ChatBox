@@ -18,8 +18,8 @@ class NavgateWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(label, style: TextSTyles.f14CirStdMediumGreyDark),
-        TextButton(
-          onPressed: onPress,
+        GestureDetector(
+          onTap: onPress,
           child: Text(text, style: TextSTyles.f14CirStdMediumWhite),
         ),
       ],

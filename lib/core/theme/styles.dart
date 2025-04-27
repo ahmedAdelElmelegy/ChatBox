@@ -8,13 +8,13 @@ class TextSTyles {
   static TextStyle f68CarosMeduimWhite = TextStyle(
     fontSize: 68.sp,
     fontFamily: 'Caros',
-    height: 1.h,
+    height: 78.h / 68.sp,
 
     color: ColorManager.white,
   );
   static TextStyle f68CarosboldWhite = TextStyle(
     fontSize: 68.sp,
-    height: 1.h,
+    height: 78.h / 68.sp,
     fontFamily: 'CarosBold',
     color: ColorManager.white,
   );
@@ -35,6 +35,7 @@ class TextSTyles {
   static TextStyle f20CarosMediumblack = TextStyle(
     fontSize: 20.sp,
     fontFamily: 'Caros',
+    height: 1.25.h,
 
     color: ColorManager.black,
   );
@@ -49,11 +50,13 @@ class TextSTyles {
   // f16
   static TextStyle f16CirStdMediumGreyDark = TextStyle(
     fontSize: 16.sp,
+    height: 26.h / 16.sp,
     fontFamily: 'CircularStd',
     color: ColorManager.greydark,
   );
   static TextStyle f16CarosMediumBlack = TextStyle(
     fontSize: 16.sp,
+    height: .9.h,
     fontFamily: 'Caros',
     color: ColorManager.black,
   );
@@ -90,36 +93,44 @@ class TextSTyles {
   // f14
   static TextStyle f14CirStdMediumGreyDark = TextStyle(
     fontSize: 14.sp,
+    height: 14.h / 14.sp,
     fontFamily: 'CircularStd',
     color: ColorManager.greydark,
   );
   static TextStyle f14CirStdMediumWhite = TextStyle(
     fontSize: 14.sp,
+    height: 14.h / 14.sp,
+
     fontFamily: 'CircularStd',
     color: ColorManager.white,
   );
   static TextStyle f14CirStdMediumGrey = TextStyle(
     fontSize: 14.sp,
+    height: 1.h,
     fontFamily: 'CircularStd',
     color: ColorManager.grey,
   );
   static TextStyle f14CirStdMediumPrimary = TextStyle(
     fontSize: 14.sp,
+    height: 14.h / 14.sp,
     fontFamily: 'CircularStd',
     color: ColorManager.primary,
   );
   static TextStyle f14CarosRegularwhite = TextStyle(
     fontSize: 14.sp,
+    height: 9.h,
     fontFamily: 'CarosRegular',
     color: ColorManager.white,
   );
   static TextStyle f14CarosMeduimBlack = TextStyle(
     fontSize: 14.sp,
+    height: 14.h / 14.sp,
     fontFamily: 'Caros',
     color: ColorManager.black,
   );
   static TextStyle f14CarosBoldBlack = TextStyle(
     fontSize: 14.sp,
+    height: 14.h / 14.sp,
     fontFamily: 'CarosBold',
     color: ColorManager.black,
   );
