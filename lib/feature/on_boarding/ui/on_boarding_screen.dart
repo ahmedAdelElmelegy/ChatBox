@@ -35,9 +35,9 @@ class OnBoardingScreen extends StatelessWidget {
               SvgIcon(icon: Assets.iconsLogo, height: 19.h),
               verticalSpace(42),
               OnBoardingHeaders(),
-              verticalSpace(38),
+              verticalSpace(20),
               SocialIconSection(),
-              verticalSpace(30),
+              verticalSpace(20),
               ORWidget(),
               verticalSpace(30),
               CustomBtn(
@@ -56,7 +56,6 @@ class OnBoardingScreen extends StatelessWidget {
                   push(const LoginScreen());
                 },
               ),
-              verticalSpace(20),
             ],
           ),
         ),

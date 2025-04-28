@@ -26,7 +26,7 @@ class TextSTyles {
     color: ColorManager.black,
   );
   // f20
-  static TextStyle f20CarosMediumWhite = TextStyle(
+  static TextStyle f20CarosboldWhite = TextStyle(
     fontSize: 20.sp,
     fontFamily: 'CarosBold',
 
@@ -118,7 +118,7 @@ class TextSTyles {
   );
   static TextStyle f14CarosRegularwhite = TextStyle(
     fontSize: 14.sp,
-    height: 9.h,
+    height: 14.h / 14.sp,
     fontFamily: 'CarosRegular',
     color: ColorManager.white,
   );
@@ -142,6 +142,8 @@ class TextSTyles {
   );
   static TextStyle f12CirStdMediumWhite = TextStyle(
     fontSize: 12.sp,
+    height: 12.h / 12.sp,
+
     fontFamily: 'CircularStd',
     color: ColorManager.white,
   );

@@ -14,6 +14,7 @@ class Assets {
   /// Assets for iconsAllFile
   /// assets/icons/all_file.svg
   static const String iconsAllFile = "assets/icons/all_file.svg";
+  static const String key = "assets/icons/key.svg";
 
   /// Assets for iconsApple
   /// assets/icons/apple.svg
@@ -43,10 +44,18 @@ class Assets {
   /// Assets for iconsChart
   /// assets/icons/Chart.svg
   static const String iconsChart = "assets/icons/Chart.svg";
+  static const String media = "assets/images/media.jpg";
 
   /// Assets for iconsDoc
   /// assets/icons/doc.svg
   static const String iconsDoc = "assets/icons/doc.svg";
+
+  static const String help = "assets/icons/Help.svg";
+
+  static const String notification = "assets/icons/Notification.svg";
+
+  static const String data = "assets/icons/Data.svg";
+  static const String users = "assets/icons/Users.svg";
 
   /// Assets for iconsFacebook
   /// assets/icons/facebook.svg
@@ -116,18 +125,25 @@ class Assets {
   /// assets/icons/user.svg
   static const String iconsUser = "assets/icons/user.svg";
   static const String message = "assets/icons/messag.svg";
+  static const String remove = "assets/icons/remove.svg";
+  static const String addUser = "assets/icons/user-add.svg";
 
   /// Assets for iconsUserActive
   /// assets/icons/user_active.svg
   static const String iconsUserActive = "assets/icons/user_active.svg";
+  static const String call2 = "assets/icons/Call2.svg";
+  static const String iconBack = "assets/icons/back.svg";
 
   /// Assets for iconsVideo
   /// assets/icons/Video.png
-  static const String iconsVideo = "assets/icons/Video.png";
+  static const String iconsVideo = "assets/icons/Video.svg";
 
   /// Assets for imagesBaground
   /// assets/images/baground.png
   static const String imagesBaground = "assets/images/baground.jpg";
+
+  /// assets/images/baground.png
+  static const String back = "assets/icons/back.svg";
 
   /// Assets for splashLogo
   /// assets/splash_logo.svg

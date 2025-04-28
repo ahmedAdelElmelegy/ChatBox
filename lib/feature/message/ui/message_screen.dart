@@ -1,5 +1,6 @@
 import 'package:chat_box/core/helpers/spacing.dart';
 import 'package:chat_box/core/theme/colors.dart';
+import 'package:chat_box/core/widgets/min_divider.dart';
 import 'package:chat_box/feature/message/ui/widgets/home_app_bar.dart';
 import 'package:chat_box/feature/message/ui/widgets/story_list_view.dart';
 import 'package:chat_box/feature/message/ui/widgets/user_list_view.dart';
@@ -43,14 +44,7 @@ class MessageScreen extends StatelessWidget {
           child: Column(
             children: [
               verticalSpace(13),
-              Container(
-                width: 30.w,
-                height: 4.h,
-                decoration: BoxDecoration(
-                  color: ColorManager.greyLight2,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
+              MinDivider(),
               verticalSpace(24),
               UserListView(),
             ],

@@ -1,8 +1,6 @@
 import 'package:chat_box/core/helpers/spacing.dart';
 import 'package:chat_box/core/theme/colors.dart';
 import 'package:chat_box/core/theme/styles.dart';
-import 'package:chat_box/core/utils/app_constants.dart';
-import 'package:chat_box/core/widgets/cached_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -23,10 +21,7 @@ class UserItem extends StatelessWidget {
                 height: 52.r,
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 decoration: BoxDecoration(shape: BoxShape.circle),
-                child: CachedImage(
-                  image: AppConstants.userInfoPicture,
-                  boxFit: BoxFit.cover,
-                ),
+                child: Image.asset('assets/images/avatar1.png'),
               ),
               horizontalSpace(12),
               Column(

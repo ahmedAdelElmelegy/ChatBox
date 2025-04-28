@@ -1,5 +1,3 @@
-import 'package:chat_box/core/utils/app_constants.dart';
-import 'package:chat_box/core/widgets/cached_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,10 +11,11 @@ class UserPicture extends StatelessWidget {
       height: 44.r,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(shape: BoxShape.circle),
-      child: CachedImage(
-        image: AppConstants.userInfoPicture,
-        boxFit: BoxFit.cover,
-      ),
+      child: Image.asset('assets/images/avatar1.png'),
+      // child: CachedImage(
+      //   image: AppConstants.userInfoPicture,
+      //   boxFit: BoxFit.cover,
+      // ),
     );
   }
 }

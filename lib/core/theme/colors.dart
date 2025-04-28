@@ -7,7 +7,7 @@ class ColorManager {
   static const Color greydark = Color(0xffB9C1BE);
   static const Color primary = Color(0xff24786D);
   static Color highlight = const Color(0xff58C3B6);
-  static const Color greylight = Color(0xffF3F6F6);
+  static const Color greylight = Color(0xffF5F6F6);
   static const Color secondaryLight = Color(0xffD6E4E0);
   static const Color red = Color(0xffF04A4C);
   static const Color error = Color(0xffFF0000);
@@ -17,4 +17,6 @@ class ColorManager {
   static const Color grey = Color(0xff797C7B);
 
   static const Color greyLight2 = Color(0xffE6E6E6);
+  static const Color greyLight3 = Color(0xFFF2F7FB);
+  static const Color dark = Color(0xFF051D13);
 }

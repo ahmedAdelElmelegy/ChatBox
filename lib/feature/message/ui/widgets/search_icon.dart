@@ -4,18 +4,25 @@ import 'package:chat_box/core/widgets/svg_icon.dart' show SvgIcon;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SearchIcon extends StatelessWidget {
-  const SearchIcon({super.key});
+class BorderIcon extends StatelessWidget {
+  final String? icon;
+  const BorderIcon({super.key, this.icon});
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: 22.r,
-      backgroundColor: ColorManager.white,
-      child: CircleAvatar(
-        radius: 21.r,
-        backgroundColor: ColorManager.black,
-        child: SvgIcon(icon: Assets.iconsSearch, width: 22.w, height: 22.h),
+    return Container(
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.transparent,
+        border: Border.all(color: ColorManager.white, width: .1.sp),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SvgIcon(
+          icon: icon ?? Assets.iconsSearch,
+          width: 22.w,
+          height: 22.h,
+        ),
       ),
     );
   }
