@@ -11,6 +11,10 @@ class FirebaseFailure extends Failure {
 
   factory FirebaseFailure.fromException(FirebaseException exception) {
     switch (exception.code) {
+      case 'weak-password':
+        return FirebaseFailure('The password provided is too weak.');
+      case 'email-already-in-use':
+        return FirebaseFailure('The account already exists for that email.');
       case 'invalid-email':
         return FirebaseFailure('The email address is not valid.');
       case 'user-disabled':
@@ -19,16 +23,13 @@ class FirebaseFailure extends Failure {
         return FirebaseFailure('No user found with this email.');
       case 'wrong-password':
         return FirebaseFailure('The password is incorrect.');
-      case 'email-already-in-use':
-        return FirebaseFailure('This email is already in use.');
+
       case 'operation-not-allowed':
         return FirebaseFailure(
           'Operation not allowed. Please contact support.',
         );
-      case 'weak-password':
-        return FirebaseFailure('The password is too weak.');
       default:
-        return FirebaseFailure('An unknown Firebase error occurred.');
+        return FirebaseFailure(exception.toString());
     }
   }
 }

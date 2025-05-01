@@ -1,6 +1,8 @@
 import 'package:chat_box/core/helpers/constants.dart';
 import 'package:chat_box/core/helpers/extentions.dart';
+import 'package:chat_box/feature/main_screen.dart';
 import 'package:chat_box/feature/on_boarding/ui/on_boarding_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,7 +18,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () {
-      pushAndRemoveUntil(const OnBoardingScreen());
+      FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+      if (firebaseAuth.currentUser != null) {
+        push(const MainScreen());
+      } else {
+        pushAndRemoveUntil(const OnBoardingScreen());
+      }
     });
     super.initState();
   }

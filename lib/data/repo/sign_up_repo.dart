@@ -1,17 +1,19 @@
 import 'package:chat_box/core/error/failure.dart';
-import 'package:chat_box/data/models/login_user_model.dart';
 import 'package:chat_box/data/services/firebase_services.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class LoginRepo {
+class SignUpRepo {
   final FirebaseServices firebaseServices;
+  SignUpRepo(this.firebaseServices);
 
-  LoginRepo(this.firebaseServices);
-  Future<Either<Failure, String>> login(LoginUserModel loginBody) async {
+  Future<Either<Failure, UserCredential>> signUp(
+    String email,
+    String password,
+  ) async {
     try {
-      await firebaseServices.login(loginBody);
-      return const Right('Login successfully');
+      final result = await firebaseServices.signUp(email, password);
+      return Right(result);
     } on FirebaseAuthException catch (e) {
       return left(FirebaseFailure.fromException(e));
     } catch (e) {

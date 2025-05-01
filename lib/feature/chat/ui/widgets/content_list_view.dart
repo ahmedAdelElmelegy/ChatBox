@@ -1,6 +1,6 @@
 import 'package:chat_box/core/helpers/constants.dart';
 import 'package:chat_box/core/theme/colors.dart';
-import 'package:chat_box/data/models/body/content_model.dart';
+import 'package:chat_box/data/models/content_model.dart';
 import 'package:chat_box/feature/chat/ui/widgets/content_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

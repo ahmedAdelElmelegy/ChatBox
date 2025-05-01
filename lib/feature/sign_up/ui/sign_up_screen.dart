@@ -1,7 +1,6 @@
 import 'package:chat_box/core/helpers/spacing.dart';
 import 'package:chat_box/core/widgets/auth_headers.dart';
-import 'package:chat_box/core/widgets/custom_btn.dart';
-import 'package:chat_box/core/widgets/custom_text_field.dart';
+import 'package:chat_box/feature/sign_up/ui/widgets/sign_up_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -23,16 +22,7 @@ class SignUpScreen extends StatelessWidget {
                     'Get chatting with friends and family today by signing up for our chat app!',
               ),
               verticalSpace(60),
-              CustomTextField(text: 'Your name'),
-              verticalSpace(30),
-              CustomTextField(text: 'Your email'),
-              verticalSpace(30),
-
-              CustomTextField(text: 'Password', obscureText: true),
-              verticalSpace(30),
-              CustomTextField(text: 'Confirm password', obscureText: true),
-              verticalSpace(121),
-              CustomBtn(onPress: () {}, label: 'Create an account'),
+              SignUpForm(),
             ],
           ),
         ),

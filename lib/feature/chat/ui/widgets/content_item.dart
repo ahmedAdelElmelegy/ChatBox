@@ -1,6 +1,6 @@
 import 'package:chat_box/core/helpers/spacing.dart';
 import 'package:chat_box/core/theme/styles.dart';
-import 'package:chat_box/data/models/body/content_model.dart';
+import 'package:chat_box/data/models/content_model.dart';
 import 'package:chat_box/feature/chat/ui/widgets/content_icon.dart';
 import 'package:flutter/material.dart';
 

@@ -1,3 +1,4 @@
+import 'package:chat_box/core/di/injection.dart';
 import 'package:chat_box/firebase_options.dart';
 import 'package:chat_box/my_app.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -7,5 +8,6 @@ GlobalKey<NavigatorState> navigator = GlobalKey<NavigatorState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  init();
   runApp(MyApp());
 }

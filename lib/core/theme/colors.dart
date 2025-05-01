@@ -15,7 +15,7 @@ class ColorManager {
   static const Color secondary = Color(0xff20A090);
   static const Color lightDark = Color(0xffCDD1D0);
   static const Color grey = Color(0xff797C7B);
-
+  static const loading = Color(0xffF3F6F6);
   static const Color greyLight2 = Color(0xffE6E6E6);
   static const Color greyLight3 = Color(0xFFF2F7FB);
   static const Color dark = Color(0xFF051D13);
