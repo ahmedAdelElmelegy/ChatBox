@@ -1,3 +1,4 @@
+import 'package:chat_box/bloc.dart';
 import 'package:chat_box/feature/splash/ui/splash_screen.dart';
 import 'package:chat_box/main.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +16,13 @@ class MyApp extends StatelessWidget {
 
       // splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          navigatorKey: navigator,
-          title: 'Flutter Demo',
-          home: SplashScreen(),
+        return GenrateMultiBloc(
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            navigatorKey: navigator,
+            title: 'Flutter Demo',
+            home: SplashScreen(),
+          ),
         );
       },
     );
