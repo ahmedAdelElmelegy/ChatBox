@@ -20,7 +20,7 @@ class StoryRepo {
 
   Future<Either<Failure, void>> createStory(StoryModel story) async {
     try {
-      await firebaseServices.CreateStory(story);
+      await firebaseServices.createStory(story);
       return const Right(null);
     } catch (e) {
       return Left(FirebaseFailure(e.toString()));

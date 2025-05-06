@@ -1,16 +1,17 @@
 import 'dart:io';
 
-import 'package:bloc/bloc.dart';
 import 'package:chat_box/data/models/story_model.dart';
 import 'package:chat_box/data/repo/story_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 part 'story_state.dart';
 
 class StoryCubit extends Cubit<StoryState> {
   StoryCubit(this.storyRepo) : super(StoryInitial());
   StoryRepo storyRepo;
-
+  static StoryCubit get(context) => BlocProvider.of(context);
   Future<void> uploadStoryWithImage(String uid, File? image) async {
     emit(StoryLoading());
     final userId = FirebaseAuth.instance.currentUser!.uid;
@@ -30,6 +31,7 @@ class StoryCubit extends Cubit<StoryState> {
         storyRepo
             .createStory(storyModel)
             .then((sucess) {
+              Fluttertoast.showToast(msg: 'Create Story Successfully');
               emit(StorySucess());
             })
             .then((e) {

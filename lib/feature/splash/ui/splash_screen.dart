@@ -18,6 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () {
+      pushAndRemoveUntil(const OnBoardingScreen());
       FirebaseAuth firebaseAuth = FirebaseAuth.instance;
       if (firebaseAuth.currentUser != null) {
         push(const MainScreen());

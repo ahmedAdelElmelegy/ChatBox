@@ -1,11 +1,14 @@
 import 'package:chat_box/core/helpers/spacing.dart';
 import 'package:chat_box/core/theme/colors.dart';
 import 'package:chat_box/core/theme/styles.dart';
+import 'package:chat_box/core/widgets/cached_image.dart';
+import 'package:chat_box/data/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UserItem extends StatelessWidget {
-  const UserItem({super.key});
+  final UserModel userModel;
+  const UserItem({super.key, required this.userModel});
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +24,13 @@ class UserItem extends StatelessWidget {
                 height: 52.r,
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 decoration: BoxDecoration(shape: BoxShape.circle),
-                child: Image.asset('assets/images/avatar1.png'),
+                child: CachedImage(image: userModel.image),
               ),
               horizontalSpace(12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Alex Linderson', style: TextSTyles.f20CarosMediumblack),
+                  Text(userModel.name, style: TextSTyles.f20CarosMediumblack),
                   verticalSpace(6),
                   Text(
                     'How are you today?',

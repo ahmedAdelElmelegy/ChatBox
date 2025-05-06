@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             navigatorKey: navigator,
             title: 'Flutter Demo',
-            home: SplashScreen(),
+            home: const SplashScreen(),
           ),
         );
       },

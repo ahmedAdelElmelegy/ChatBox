@@ -1,12 +1,21 @@
 import 'package:chat_box/core/helpers/spacing.dart';
 import 'package:chat_box/core/theme/colors.dart';
 import 'package:chat_box/core/theme/styles.dart';
+import 'package:chat_box/data/models/message_model.dart';
+import 'package:chat_box/data/models/user_model.dart';
 import 'package:chat_box/feature/message/ui/widgets/user_picture.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 class MyFriendMessage extends StatelessWidget {
-  const MyFriendMessage({super.key});
+  final MessageModel msg;
+  final UserModel userModel;
+  const MyFriendMessage({
+    super.key,
+    required this.msg,
+    required this.userModel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +25,7 @@ class MyFriendMessage extends StatelessWidget {
         alignment: Alignment.centerLeft,
         child: Row(
           children: [
-            UserPicture(),
+            UserPicture(image: userModel.image),
             horizontalSpace(12),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -24,7 +33,7 @@ class MyFriendMessage extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Jhon Abraham', style: TextSTyles.f14CarosMeduimBlack),
+                    Text(userModel.name, style: TextSTyles.f14CarosMeduimBlack),
                     verticalSpace(12),
                     Container(
                       margin: EdgeInsets.only(left: 8.w),
@@ -42,7 +51,7 @@ class MyFriendMessage extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        'Hello! Jhon abraham......',
+                        msg.content,
                         style: TextSTyles.f12CirStdMediumGrey,
                       ),
                     ),
@@ -50,7 +59,7 @@ class MyFriendMessage extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  '09:25 AM',
+                  DateFormat('hh:mm a').format(msg.timestamp),
                   style: TextSTyles.f10CirStdMediumWhite,
                   textAlign: TextAlign.left,
                 ),
