@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:chat_box/core/helpers/constants.dart';
-import 'package:chat_box/core/helpers/extentions.dart';
 import 'package:chat_box/core/helpers/spacing.dart';
 import 'package:chat_box/core/theme/colors.dart';
 import 'package:chat_box/core/widgets/svg_icon.dart';
@@ -9,7 +7,6 @@ import 'package:chat_box/data/manager/send_message/send_message_cubit.dart';
 import 'package:chat_box/data/models/user_model.dart';
 import 'package:chat_box/feature/chat/ui/widgets/chat_text_field.dart';
 import 'package:chat_box/feature/chat/ui/widgets/content_bottom_sheet.dart';
-import 'package:chat_box/feature/chat/ui/widgets/voice_message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -86,10 +83,14 @@ class _EnterMessageWidgetState extends State<EnterMessageWidget> {
                   messageCubit.images.isNotEmpty ||
                   messageCubit.pdfUrl.isNotEmpty) {
                 messageCubit.sendMessage(
+                  token: widget.userModel.userToken,
                   receiverId: widget.userModel.uid,
                   senderId: user.currentUser!.uid,
+                  username: widget.userModel.name,
                 );
-                widget.scrollToBottom!();
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  widget.scrollToBottom?.call();
+                });
 
                 setState(() {});
               }
@@ -104,13 +105,26 @@ class _EnterMessageWidgetState extends State<EnterMessageWidget> {
     if (text.isNotEmpty && text != '' ||
         context.watch<SendMessageCubit>().images.isNotEmpty ||
         context.watch<SendMessageCubit>().pdfUrl.isNotEmpty) {
-      return GestureDetector(
-        onTap: onTap,
-        child: CircleAvatar(
-          backgroundColor: ColorManager.primary,
-          radius: 20.r,
-          child: SvgIcon(icon: Assets.iconsSend),
-        ),
+      return BlocBuilder<SendMessageCubit, SendMessageState>(
+        builder: (context, state) {
+          return GestureDetector(
+            onTap: onTap,
+            child: CircleAvatar(
+              backgroundColor: ColorManager.primary,
+              radius: 20.r,
+              child:
+                  state is SendMessageLoading
+                      ? SizedBox(
+                        height: 20.r,
+                        width: 20.r,
+                        child: CircularProgressIndicator(
+                          color: ColorManager.white,
+                        ),
+                      )
+                      : SvgIcon(icon: Assets.iconsSend),
+            ),
+          );
+        },
       );
     } else {
       return Row(
@@ -119,7 +133,7 @@ class _EnterMessageWidgetState extends State<EnterMessageWidget> {
           horizontalSpace(12),
           GestureDetector(
             onTap: () {
-              push(VoiceMessageScreen());
+              // push(VoiceMessageScreen());
             },
             child: SvgIcon(icon: Assets.iconsMicrophone),
           ),
@@ -127,9 +141,4 @@ class _EnterMessageWidgetState extends State<EnterMessageWidget> {
       );
     }
   }
-
-  // String _getChatId(String user1, String user2) {
-  //   final sorted = [user1, user2]..sort();
-  //   return '${sorted[0]}_${sorted[1]}';
-  // }
 }

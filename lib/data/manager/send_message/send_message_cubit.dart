@@ -3,14 +3,13 @@ import 'dart:io';
 import 'package:chat_box/core/helpers/extentions.dart';
 import 'package:chat_box/data/models/message_model.dart';
 import 'package:chat_box/data/repo/chat_repo.dart';
+import 'package:chat_box/notifications/services/send_notification_service.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:uuid/uuid.dart';
 
 part 'send_message_state.dart';
@@ -85,7 +84,7 @@ class SendMessageCubit extends Cubit<SendMessageState> {
       final fileName = DateTime.now().millisecondsSinceEpoch.toString();
       final ref = storage.ref().child('chat_images/$fileName.jpg');
 
-      final uploadTask = await ref.putFile(file);
+      await ref.putFile(file);
       final url = await ref.getDownloadURL();
       downloadUrls.add(url);
     }
@@ -94,10 +93,13 @@ class SendMessageCubit extends Cubit<SendMessageState> {
   }
 
   Future<void> sendMessage({
+    required String token,
     required String receiverId,
     required String senderId,
+    required String username,
   }) async {
     emit(SendMessageLoading());
+    SendNotificationService sendNotificationService = SendNotificationService();
 
     try {
       List<String> imageUrls = [];
@@ -105,17 +107,6 @@ class SendMessageCubit extends Cubit<SendMessageState> {
       if (images.isNotEmpty) {
         imageUrls = await _uploadImages();
       }
-      // final contact = await pickFirstContact();
-      // if (contact == null) {
-      //   emit(SendMessageFailure("No contact found"));
-      //   return;
-      // }
-
-      // final name = contact.displayName;
-      // final phone =
-      //     contact.phones.isNotEmpty ? contact.phones.first.number : 'No Phone';
-
-      // final contactText = 'Name: $name\nPhone: $phone';
 
       final message = MessageModel(
         id: const Uuid().v4(),
@@ -129,12 +120,16 @@ class SendMessageCubit extends Cubit<SendMessageState> {
         isWatched: false,
         imageList: imageUrls,
       );
-
       final result = await chatRepo.sendMessage(message);
-      result.fold(
-        (l) => emit(SendMessageFailure(l.message)),
-        (r) => emit(SendMessageSucess()),
-      );
+      result.fold((l) => emit(SendMessageFailure(l.message)), (r) {
+        sendNotificationService.sendNotificationUsingApi(
+          title: username,
+          body: textController.text,
+          token: token,
+          data: {},
+        );
+        emit(SendMessageSucess());
+      });
 
       // Clear form
       textController.clear();

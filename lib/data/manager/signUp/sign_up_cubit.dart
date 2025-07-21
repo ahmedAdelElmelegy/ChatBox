@@ -5,6 +5,7 @@ import 'package:chat_box/data/models/user_model.dart';
 import 'package:chat_box/data/repo/create_user_repo.dart';
 import 'package:chat_box/data/repo/sign_up_repo.dart';
 import 'package:chat_box/feature/login/ui/login_screen.dart';
+import 'package:chat_box/notifications/services/notification_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -28,7 +29,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   static SignUpCubit get(context) => BlocProvider.of(context);
 
   Future<void> signUp(String email, String password, String image) async {
-    emit(SignUpLoading());
+    String token = await NotificationServices.getToken();
     final result = await signUpRepo.signUp(email, password);
     result.fold(
       (l) {
@@ -37,6 +38,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       },
       (r) async {
         UserModel userModel = UserModel(
+          userToken: token,
           uid: r.user!.uid,
           email: emailController.text,
           name: nameController.text,

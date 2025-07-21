@@ -7,10 +7,10 @@ class SelectedFileWidget extends StatelessWidget {
   final VoidCallback onTap;
 
   const SelectedFileWidget({
-    Key? key,
+    super.key,
     required this.fileName,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

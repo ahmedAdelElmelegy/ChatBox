@@ -17,13 +17,14 @@ import 'package:chat_box/data/repo/sign_up_repo.dart';
 import 'package:chat_box/data/repo/story_repo.dart';
 import 'package:chat_box/data/services/chat_services.dart';
 import 'package:chat_box/data/services/firebase_services.dart';
+import 'package:chat_box/notifications/services/notification_services.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
 void init() {
   getIt.registerLazySingleton(() => FirebaseServices());
   getIt.registerLazySingleton(() => ChatServices());
-
+  getIt.registerLazySingleton(() => NotificationServices());
   // repo
   getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(getIt()));
   getIt.registerLazySingleton<SignUpRepo>(() => SignUpRepo(getIt()));

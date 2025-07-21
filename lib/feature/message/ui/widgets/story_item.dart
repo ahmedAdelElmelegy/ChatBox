@@ -8,7 +8,6 @@ import 'package:chat_box/core/theme/styles.dart';
 import 'package:chat_box/core/widgets/cached_image.dart';
 import 'package:chat_box/data/manager/add_story/story_cubit.dart';
 import 'package:chat_box/data/models/story_model.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
@@ -28,7 +27,7 @@ class _StoryItemState extends State<StoryItem> {
     final bloc = StoryCubit.get(context);
     return GestureDetector(
       onTap: () async {
-        showImagePickerOptions(context);
+        //  showDialog(context: context, builder:   )
       },
       child: Column(
         children: [
@@ -82,8 +81,8 @@ class _StoryItemState extends State<StoryItem> {
                         )
                         : GestureDetector(
                           onTap: () async {
-                            await bloc.uploadStoryWithImage(
-                              FirebaseAuth.instance.currentUser!.uid,
+                            await bloc.uploadStory(
+                              widget.storyModel.caption,
                               File(selectedImage!.path),
                             );
                             selectedImage = null;

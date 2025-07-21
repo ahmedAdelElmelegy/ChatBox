@@ -11,7 +11,9 @@ class GetStoryRepo {
     return firebaseServices.getStories().map((snapshot) {
       try {
         final stories =
-            snapshot.docs.map((doc) => StoryModel.fromMap(doc.data())).toList();
+            snapshot.docs
+                .map((doc) => StoryModel.fromJson(doc.data()))
+                .toList();
         return Right(stories);
       } catch (e) {
         return Left(FirebaseFailure(e.toString()));

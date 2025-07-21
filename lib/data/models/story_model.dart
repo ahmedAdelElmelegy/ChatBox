@@ -1,31 +1,31 @@
 class StoryModel {
+  final String id;
+  final String userId;
   final String imageUrl;
-  final int timestamp;
-  final int duration;
-  final String uid;
+  final String caption;
+  final DateTime timestamp;
 
   StoryModel({
-    required this.uid,
+    required this.id,
+    required this.userId,
     required this.imageUrl,
+    required this.caption,
     required this.timestamp,
-    required this.duration,
   });
 
-  factory StoryModel.fromMap(Map<String, dynamic> map) {
-    return StoryModel(
-      uid: map['uid'],
-      imageUrl: map['imageUrl'],
-      timestamp: map['timestamp'],
-      duration: map['duration'],
-    );
-  }
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'userId': userId,
+    'imageUrl': imageUrl,
+    'caption': caption,
+    'timestamp': timestamp.toIso8601String(),
+  };
 
-  Map<String, dynamic> toMap() {
-    return {
-      'imageUrl': imageUrl,
-      'timestamp': timestamp,
-      'duration': duration,
-      'uid': uid,
-    };
-  }
+  factory StoryModel.fromJson(Map<String, dynamic> json) => StoryModel(
+    id: json['id'],
+    userId: json['userId'],
+    imageUrl: json['imageUrl'],
+    caption: json['caption'] ?? '',
+    timestamp: DateTime.parse(json['timestamp']),
+  );
 }

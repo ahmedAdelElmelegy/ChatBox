@@ -1,5 +1,6 @@
 class UserModel {
   final String uid;
+  final String userToken;
   final String email;
   final String name;
   final String image;
@@ -9,6 +10,7 @@ class UserModel {
   final bool isBlocked; // if you want to support blocking users
 
   UserModel({
+    required this.userToken,
     required this.uid,
     required this.email,
     required this.name,
@@ -20,6 +22,7 @@ class UserModel {
   });
 
   factory UserModel.fromMap(Map<String, dynamic> map) => UserModel(
+    userToken: map['userToken'] ?? '',
     uid: map['uid'] ?? '',
     email: map['email'] ?? '',
     name: map['name'] ?? '',
@@ -40,5 +43,6 @@ class UserModel {
     'lastSeen': lastSeen?.toIso8601String(),
     'isTyping': isTyping,
     'isBlocked': isBlocked,
+    'userToken': userToken,
   };
 }

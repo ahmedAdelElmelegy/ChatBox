@@ -1,10 +1,8 @@
 import 'package:chat_box/core/helpers/constants.dart';
-import 'package:chat_box/core/helpers/extentions.dart';
 import 'package:chat_box/core/theme/colors.dart';
 import 'package:chat_box/data/manager/send_message/send_message_cubit.dart';
 import 'package:chat_box/data/models/content_model.dart';
 import 'package:chat_box/feature/chat/ui/widgets/content_item.dart';
-import 'package:chat_box/feature/chat/ui/widgets/voice_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -56,7 +54,7 @@ class _ContentListViewState extends State<ContentListView> {
         subtitle: 'Share your location',
         icon: Assets.iconsLocation,
         onPress: () {
-          push(VoiceMessageScreen());
+          // push(VoiceMessageScreen());
         },
       ),
     ];

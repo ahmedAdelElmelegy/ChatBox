@@ -30,11 +30,12 @@ class _ChatScreenState extends State<ChatScreen> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<GetChatCubit>(context).getChat(widget.userModel.uid);
+      _scrollController = ScrollController();
     });
     super.initState();
   }
 
-  final ScrollController _scrollController = ScrollController();
+  late ScrollController _scrollController;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +75,13 @@ class _ChatScreenState extends State<ChatScreen> {
                             child: Text('Error: ${snapshot.error}'),
                           );
                         }
-
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          if (_scrollController.hasClients) {
+                            _scrollController.jumpTo(
+                              _scrollController.position.maxScrollExtent,
+                            );
+                          }
+                        });
                         final messages = snapshot.data ?? [];
 
                         if (messages.isEmpty) {
@@ -89,7 +96,15 @@ class _ChatScreenState extends State<ChatScreen> {
                             final isMe =
                                 msg.senderId ==
                                 FirebaseAuth.instance.currentUser?.uid;
-
+                            if (index == messages.length - 1) {
+                              WidgetsBinding.instance.addPostFrameCallback((_) {
+                                _scrollController.animateTo(
+                                  _scrollController.position.maxScrollExtent,
+                                  duration: const Duration(milliseconds: 300),
+                                  curve: Curves.easeOut,
+                                );
+                              });
+                            }
                             return isMe
                                 ? MyMessage(msg: msg)
                                 : MyFriendMessage(
@@ -128,7 +143,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         icon: Icon(Icons.clear, color: Colors.grey),
                         onPressed: () {
                           context.read<SendMessageCubit>().pdfUrl = '';
-                          context.read<SendMessageCubit>().emit(ImageCleared());
+                          // context.read<SendMessageCubit>().emit(ImageCleared());
                         },
                       ),
                     ],
@@ -184,6 +199,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       duration: const Duration(milliseconds: 300),
                       curve: Curves.easeOut,
                     ),
+
                 userModel: widget.userModel,
               ),
             ],

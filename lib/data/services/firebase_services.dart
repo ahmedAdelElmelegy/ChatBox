@@ -13,7 +13,7 @@ class FirebaseServices {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  final FirebaseStorage _storage = FirebaseStorage.instance;
+  // final FirebaseStorage _storage = FirebaseStorage.instance;
   Future<UserCredential> login(LoginUserModel loginBody) async {
     try {
       return _auth.signInWithEmailAndPassword(
@@ -61,15 +61,32 @@ class FirebaseServices {
   }
 
   // story
-  Future<String> uploadStory(File file) async {
-    final fileId = const Uuid().v4();
-    final ref = _storage.ref().child('stories/$fileId.jpg');
-    await ref.putFile(file);
-    return await ref.getDownloadURL();
-  }
+  Future<void> uploadStory(File imageFile, String caption) async {
+    final user = FirebaseAuth.instance.currentUser!;
+    final storyId = const Uuid().v4();
+    final ref = FirebaseStorage.instance
+        .ref()
+        .child('stories')
+        .child(user.uid)
+        .child('$storyId.jpg');
 
-  Future<void> createStory(StoryModel storyModel) async {
-    await _firestore.collection('stories').add(storyModel.toMap());
+    await ref.putFile(imageFile);
+    final imageUrl = await ref.getDownloadURL();
+
+    final story = StoryModel(
+      id: storyId,
+      userId: user.uid,
+      imageUrl: imageUrl,
+      caption: caption,
+      timestamp: DateTime.now(),
+    );
+
+    await FirebaseFirestore.instance
+        .collection('stories')
+        .doc(user.uid)
+        .collection('userStories')
+        .doc(storyId)
+        .set(story.toJson());
   }
 
   Stream<QuerySnapshot<Map<String, dynamic>>> getStories() {

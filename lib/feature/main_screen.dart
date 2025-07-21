@@ -6,6 +6,7 @@ import 'package:chat_box/feature/calls/ui/calls_screen.dart';
 import 'package:chat_box/feature/contacts/ui/contacts_screen.dart';
 import 'package:chat_box/feature/message/ui/message_screen.dart';
 import 'package:chat_box/feature/settings/ui/settings_screen.dart';
+import 'package:chat_box/notifications/services/notification_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -32,6 +33,8 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void initState() {
+    NotificationServices.firebaseInit(context);
+    NotificationServices.setupInteractedMessage(context);
     onItemTap(0);
     super.initState();
   }
