@@ -1,5 +1,4 @@
 import 'package:chat_box/core/di/injection.dart';
-import 'package:chat_box/data/services/push_notification_services.dart';
 import 'package:chat_box/firebase_options.dart';
 import 'package:chat_box/my_app.dart';
 import 'package:chat_box/notifications/services/fcm_services.dart';
@@ -22,10 +21,6 @@ void main() async {
   FcmServices.firebaseInit();
 
   init();
-  // await Future.wait([
-  //   // LocalNotificationServices.init(),
-  //   PushNotificationServices.initNotification(),
-  // ]);
 
   runApp(MyApp());
 }

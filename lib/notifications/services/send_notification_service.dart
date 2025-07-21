@@ -12,7 +12,7 @@ class SendNotificationService {
   }) async {
     String serverKey = await GetServicesKey.getServerKeyToken();
     String baseUrl =
-        'https://fcm.googleapis.com/v1/projects/e-comm-firebase-9c2e8/messages:send';
+        'https://fcm.googleapis.com/v1/projects/project name/messages:send';
     var headers = {
       'Authorization': 'Bearer $serverKey',
       'Content-Type': 'application/json',

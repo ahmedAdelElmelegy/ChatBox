@@ -8,6 +8,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class NotificationServices {
   static FirebaseMessaging messaging = FirebaseMessaging.instance;
+  // messaging handle
+
+  // firebase for token of each user
+
   static FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
   static void requestNotificationPermission() async {
@@ -63,7 +67,7 @@ class NotificationServices {
   static void firebaseInit(BuildContext context) {
     FirebaseMessaging.onMessage.listen((message) {
       RemoteNotification? notification = message.notification;
-      AndroidNotification? android = message.notification?.android;
+      // AndroidNotification? android = message.notification?.android;
       if (kDebugMode) {
         print('notification title ${notification!.title}');
         print('notification title ${notification.body}');
@@ -73,6 +77,7 @@ class NotificationServices {
       }
       // android
       if (Platform.isAndroid) {
+        // ignore: use_build_context_synchronously
         initLocalNotification(context, message);
         showNotifications(message);
         // handleMessage(context, message);
@@ -131,12 +136,14 @@ class NotificationServices {
   // open message
   static Future<void> setupInteractedMessage(BuildContext context) async {
     FirebaseMessaging.onMessageOpenedApp.listen((event) {
+      // ignore: use_build_context_synchronously
       handleMessage(context, event);
     });
     FirebaseMessaging.instance.getInitialMessage().then((
       RemoteMessage? message,
     ) {
       if (message != null && message.data.isNotEmpty) {
+        // ignore: use_build_context_synchronously
         handleMessage(context, message);
       }
     });
